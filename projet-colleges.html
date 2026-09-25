@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Étude de cas BI : pilotage des absences, des remplacements, du budget et de la qualité des données dans les collèges.">
+  <title>Pilotage des collèges | Kim Ngoc Pham</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Accueil">Kim Ngoc <span>PHAM</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a class="active" href="projets.html">Projets</a>
+      <a class="contact-link" href="mailto:kn.pham27@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main class="case-study college-case">
+    <section class="case-hero reveal">
+      <a class="back-link" href="projets.html">← Retour aux projets</a>
+      <p class="eyebrow">Étude de cas · Business Intelligence & Data Quality</p>
+      <h1>Pilotage des collèges</h1>
+      <p class="case-lead">Consolider des données issues de plusieurs API pour piloter les absences, les remplacements et le budget, tout en donnant aux équipes métiers les moyens d’identifier et de justifier les anomalies.</p>
+      <div class="case-tags"><span>Qlik Sense</span><span>Qlik Script</span><span>API REST</span><span>JSON</span><span>Data Modeling</span><span>Data Quality</span><span>Budget</span></div>
+      <div class="source-flow college-flow" aria-label="Étapes de la solution">
+        <div><small>COLLECTER</small><strong>API métiers · Open Data</strong></div>
+        <div><small>STRUCTURER</small><strong>Pagination · Modèle</strong></div>
+        <div><small>FIABILISER</small><strong>Doublons · Anomalies</strong></div>
+        <div><small>PILOTER</small><strong>Activité · Budget</strong></div>
+      </div>
+    </section>
+
+    <aside class="confidentiality-note">
+      <strong>Démonstration reconstituée</strong>
+      <p>Les données, chiffres, établissements et représentations visuelles présentés ici sont fictifs. Aucun endpoint, identifiant, fichier ou écran de production n’est publié.</p>
+    </aside>
+
+    <section class="case-section case-intro reveal">
+      <div><p class="eyebrow">Contexte</p><h2>Des données nombreuses, distribuées et saisies manuellement.</h2></div>
+      <div class="case-copy"><p>Le suivi des absences et des remplacements mobilise plusieurs applications opérationnelles ainsi que des données publiques gouvernementales. Les informations nécessaires au pilotage sont réparties entre différentes API et ne partagent pas toujours la même structure ni le même niveau de détail.</p><p>Une partie des données étant saisie manuellement, des erreurs, omissions ou demandes répétées peuvent apparaître. Sans contrôle, ces incohérences faussent les volumes suivis et le coût estimé des remplacements.</p></div>
+    </section>
+
+    <section class="college-architecture reveal">
+      <p class="eyebrow">Architecture</p>
+      <h2>Un pipeline multi-API conçu pour des volumes paginés.</h2>
+      <div class="architecture-grid">
+        <article><small>01 · SOURCES</small><h3>API opérationnelles</h3><p>Demandes, absences, agents, profils, remplacements et éléments de coût.</p></article>
+        <article><small>02 · ENRICHISSEMENT</small><h3>Données publiques</h3><p>Référentiels gouvernementaux utilisés pour compléter et harmoniser l’analyse.</p></article>
+        <article><small>03 · EXTRACTION</small><h3>Pagination par boucle</h3><p>Lecture successive des pages jusqu’à récupération de l’ensemble des enregistrements.</p></article>
+        <article><small>04 · STOCKAGE</small><h3>Couche QVD</h3><p>Standardisation, historisation et mise à disposition de données contrôlées.</p></article>
+      </div>
+    </section>
+
+    <section class="contract-section college-loop reveal">
+      <div class="contract-copy"><p class="eyebrow">Pagination</p><h2>Automatiser une extraction complète sans limiter le volume.</h2><p>L’API retournant les données page par page, le script interroge successivement chaque page, concatène les résultats et s’arrête lorsque la dernière page est atteinte. Des contrôles vérifient le nombre de lignes récupérées et la cohérence de la réponse.</p></div>
+      <pre><code>LET vPage = 1;
+LET vLastPage = 1;
+
+DO WHILE vPage &lt;= vLastPage
+    // Appel de la page courante
+    // Lecture des enregistrements
+    // Concaténation des résultats
+
+    LET vLastPage = total_pages;
+    LET vPage = vPage + 1;
+LOOP</code></pre>
+    </section>
+
+    <section class="college-model reveal">
+      <div class="college-model-copy"><p class="eyebrow">Modélisation</p><h2>Un modèle analytique centré sur la demande de remplacement.</h2><p>La granularité et les clés sont définies avant les jointures afin d’éviter les doublons techniques et les associations ambiguës. Le modèle relie les demandes aux périodes, établissements, profils, motifs, remplacements et coûts.</p></div>
+      <div class="model-map" aria-label="Modèle de données simplifié">
+        <span>Calendrier scolaire</span><span>Établissements & zones</span><strong>Demandes de remplacement</strong><span>Absences & motifs</span><span>Agents & profils</span><span>Remplacements & coûts</span>
+      </div>
+    </section>
+
+    <section class="case-section quality-section college-quality reveal">
+      <div><p class="eyebrow">Data Quality</p><h2>Identifier ce qui peut fausser les indicateurs et le budget.</h2></div>
+      <div class="quality-grid">
+        <article><h3>Demandes répétées</h3><p>Repérage des demandes créées plusieurs fois pour une même situation afin d’éviter une surestimation du coût prévisionnel.</p></article>
+        <article><h3>Périodes superposées</h3><p>Détection des intervalles qui se chevauchent pour un même agent, profil ou établissement.</p></article>
+        <article><h3>Données incomplètes</h3><p>Contrôle des dates, motifs, profils, statuts et informations nécessaires au calcul des KPI.</p></article>
+        <article><h3>Relations incohérentes</h3><p>Vérification de la correspondance entre une demande, une absence, un remplacement et son coût associé.</p></article>
+      </div>
+    </section>
+
+    <section class="anomaly-logic reveal">
+      <div><p class="eyebrow">Règle de contrôle</p><h2>Détecter automatiquement les périodes qui se chevauchent.</h2><p>Deux demandes présentent un chevauchement lorsque le début de la première est antérieur ou égal à la fin de la seconde, et réciproquement. Les paires identifiées sont regroupées dans une table de contrôle exploitable par le métier.</p></div>
+      <div class="overlap-demo" aria-label="Exemple fictif de chevauchement">
+        <article><small>DEMANDE A</small><span style="--start:8%;--length:58%"></span><b>03/02 — 14/02</b></article>
+        <article><small>DEMANDE B</small><span style="--start:42%;--length:46%"></span><b>10/02 — 18/02</b></article>
+        <p><strong>5 jours</strong> potentiellement comptabilisés deux fois</p>
+      </div>
+    </section>
+
+    <section class="analysis-header reveal"><p class="eyebrow">Tableau de bord</p><h2>Un outil commun pour analyser, justifier et fiabiliser.</h2><p>Le dashboard associe pilotage budgétaire et contrôle opérationnel. Les sélections interactives permettent de passer d’une vision globale à la demande concernée, puis de documenter l’anomalie avec les référents.</p></section>
+
+    <section class="dashboard-demo reveal" aria-label="Maquette de dashboard avec données fictives">
+      <div class="demo-toolbar"><span>Année scolaire</span><span>Zone</span><span>Collège</span><span>Motif</span></div>
+      <div class="demo-kpis"><article><small>Demandes</small><strong>1 248</strong><em>valeur fictive</em></article><article><small>Taux de remplacement</small><strong>78,4 %</strong><em>valeur fictive</em></article><article><small>Budget consommé</small><strong>64 %</strong><em>valeur fictive</em></article><article><small>Anomalies ouvertes</small><strong>37</strong><em>valeur fictive</em></article></div>
+      <div class="demo-panels">
+        <article class="budget-bars"><h3>Budget estimé par zone</h3><div><span>Zone A</span><i style="--w:82%"></i></div><div><span>Zone B</span><i style="--w:68%"></i></div><div><span>Zone C</span><i style="--w:54%"></i></div></article>
+        <article class="anomaly-table"><h3>Anomalies à examiner</h3><div><b>Type</b><b>Établissement</b><b>Statut</b></div><div><span>Doublon</span><span>Collège A</span><em>À justifier</em></div><div><span>Chevauchement</span><span>Collège B</span><em>En cours</em></div><div><span>Coût atypique</span><span>Collège C</span><em>À contrôler</em></div></article>
+      </div>
+    </section>
+
+    <section class="case-section workflow-section reveal">
+      <div><p class="eyebrow">Collaboration métier</p><h2>De l’anomalie détectée à la donnée corrigée.</h2></div>
+      <div class="workflow-steps">
+        <article><strong>Détecter</strong><p>Le dashboard signale une incohérence ou une demande potentiellement répétée.</p></article>
+        <article><strong>Examiner</strong><p>Le référent retrouve les demandes concernées grâce aux filtres et au niveau de détail.</p></article>
+        <article><strong>Justifier</strong><p>Les référents confrontent le contexte et distinguent une erreur d’un cas métier légitime.</p></article>
+        <article><strong>Corriger</strong><p>La donnée est mise à jour dans l’application opérationnelle, puis contrôlée au reload suivant.</p></article>
+      </div>
+    </section>
+
+    <section class="technical-results college-impact reveal">
+      <div><p class="eyebrow">Impact</p><h2>Une donnée courante plus fiable pour ajuster le budget.</h2><p>La solution réduit les consolidations manuelles, facilite l’analyse des coûts et crée un langage commun entre les référents. Les anomalies restent traçables jusqu’à leur justification ou leur correction, ce qui renforce progressivement la confiance dans les indicateurs.</p></div>
+      <div class="test-panel"><strong>4 usages</strong><span>réunis dans une solution</span><ul><li>Pilotage de l’activité</li><li>Analyse budgétaire</li><li>Contrôle des anomalies</li><li>Dialogue entre référents</li></ul></div>
+    </section>
+
+    <section class="skills-summary reveal">
+      <p class="eyebrow">Compétences démontrées</p><h2>Une solution BI end-to-end.</h2>
+      <div><article><small>API & AUTOMATISATION</small><p>Connexion multi-API, pagination, boucles et contrôles d’extraction.</p></article><article><small>DATA MODELING</small><p>Granularité, clés, calendrier scolaire et modèle analytique optimisé.</p></article><article><small>DATA QUALITY</small><p>Doublons, chevauchements, complétude et cohérence des relations.</p></article><article><small>BUSINESS INTELLIGENCE</small><p>KPI, navigation interactive, analyse détaillée et restitution Qlik Sense.</p></article><article><small>PILOTAGE BUDGÉTAIRE</small><p>Suivi du coût estimé, consommation et analyse par établissement ou zone.</p></article><article><small>COLLABORATION</small><p>Justification, recette métier et amélioration continue de la fiabilité.</p></article></div>
+    </section>
+
+    <section class="case-next"><a href="projets.html">Voir tous les projets <span>→</span></a></section>
+  </main>
+
+  <footer><p>© <span data-year></span> Kim Ngoc Pham</p><div><a href="mailto:kn.pham27@gmail.com">E-mail</a><a href="https://www.linkedin.com/in/kim-ngoc-pham/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/Kim-ngoc2710" target="_blank" rel="noreferrer">GitHub</a></div></footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
