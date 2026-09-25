@@ -25,12 +25,12 @@
       <p class="eyebrow">Étude de cas · Analyse commerciale & Data Quality</p>
       <h1>BottleNeck</h1>
       <p class="case-lead">Consolider des données issues de plusieurs systèmes, sécuriser leur qualité et les transformer en recommandations exploitables pour piloter les ventes et les stocks.</p>
-      <div class="case-tags"><span>Python</span><span>pandas</span><span>Pandera</span><span>pytest</span><span>Matplotlib</span><span>Seaborn</span><span>Automatisation</span></div>
+      <div class="case-tags"><span>Python</span><span>Pandas</span><span>Pandera</span><span>Pytest</span><span>Matplotlib</span><span>Seaborn</span><span>Automatisation</span></div>
       <div class="source-flow" aria-label="Sources et étapes du pipeline">
-        <div><small>01 · SOURCES</small><strong>ERP · WEB · LIAISON</strong></div><i>→</i>
-        <div><small>02 · QUALITÉ</small><strong>Pandera · Nettoyage</strong></div><i>→</i>
-        <div><small>03 · ANALYSE</small><strong>Ventes · Marges · Stocks</strong></div><i>→</i>
-        <div><small>04 · SORTIES</small><strong>Dataset · Contrôles</strong></div>
+        <div><small>SOURCES</small><strong>ERP · WEB · LIAISON</strong></div>
+        <div><small>QUALITÉ</small><strong>Pandera · Nettoyage</strong></div>
+        <div><small>ANALYSE</small><strong>Ventes · Marges · Stocks</strong></div>
+        <div><small>SORTIES</small><strong>Dataset · Contrôles</strong></div>
       </div>
     </section>
 
@@ -57,10 +57,10 @@
     <section class="case-section quality-section reveal">
       <div><p class="eyebrow">Préparation</p><h2>Fiabiliser les données avant de les analyser.</h2></div>
       <div class="quality-grid">
-        <article><span>01</span><h3>Prix</h3><p>Contrôle des valeurs négatives et isolation des produits dont le prix de vente est inférieur au prix d’achat.</p></article>
-        <article><span>02</span><h3>Stocks</h3><p>Correction des stocks négatifs et remise en cohérence des statuts <em>instock</em> et <em>outofstock</em>.</p></article>
-        <article><span>03</span><h3>Identifiants</h3><p>Gestion des valeurs manquantes, nettoyage des espaces et harmonisation des formats de clés.</p></article>
-        <article><span>04</span><h3>Doublons</h3><p>Suppression des doublons exacts et conservation des cas conflictuels pour vérification.</p></article>
+        <article><h3>Prix</h3><p>Contrôle des valeurs négatives et isolation des produits dont le prix de vente est inférieur au prix d’achat.</p></article>
+        <article><h3>Stocks</h3><p>Correction des stocks négatifs et remise en cohérence des statuts <em>instock</em> et <em>outofstock</em>.</p></article>
+        <article><h3>Identifiants</h3><p>Gestion des valeurs manquantes, nettoyage des espaces et harmonisation des formats de clés.</p></article>
+        <article><h3>Doublons</h3><p>Suppression des doublons exacts et conservation des cas conflictuels pour vérification.</p></article>
       </div>
     </section>
 
@@ -91,7 +91,7 @@
     <section class="analysis-header reveal"><p class="eyebrow">Analyse</p><h2>Des données consolidées aux décisions commerciales.</h2><p>Les indicateurs combinent performance des ventes, contribution au chiffre d’affaires, rentabilité et exposition au risque de surstock.</p></section>
 
     <section class="analysis-block reveal">
-      <div class="analysis-copy"><span>01</span><h3>Cœur de gamme ou segment premium&nbsp;?</h3><p>Le cœur de gamme représente la majorité du catalogue et soutient les volumes. Le segment premium contribue proportionnellement davantage au chiffre d’affaires.</p></div>
+      <div class="analysis-copy"><h3>Cœur de gamme ou segment premium&nbsp;?</h3><p>Le cœur de gamme représente la majorité du catalogue et soutient les volumes. Le segment premium contribue proportionnellement davantage au chiffre d’affaires.</p></div>
       <div class="segment-visual">
         <article><small>CŒUR DE GAMME · &lt; 50 €</small><strong>83 %</strong><p>des références</p><div><i style="width:68%"></i></div><b>68 % du CA</b></article>
         <article><small>PREMIUM · &gt; 50 €</small><strong>17 %</strong><p>des références</p><div><i style="width:32%"></i></div><b>32 % du CA</b></article>
@@ -100,7 +100,7 @@
 
     <section class="analysis-block pareto-block reveal">
       <div class="pareto-visual"><strong>420</strong><span>références génèrent</span><b>80 %</b><span>du chiffre d’affaires</span><div><i></i></div><small>90 % vins · 6 % champagnes · 4 % autres catégories</small></div>
-      <div class="analysis-copy"><span>02</span><h3>Concentration du chiffre d’affaires</h3><p>L’analyse Pareto identifie les références stratégiques à sécuriser. Les vins dominent ce portefeuille, tandis que les produits premium restent visibles parmi les plus fortes contributions.</p></div>
+      <div class="analysis-copy"><h3>Concentration du chiffre d’affaires</h3><p>L’analyse Pareto identifie les références stratégiques à sécuriser. Les vins dominent ce portefeuille, tandis que les produits premium restent visibles parmi les plus fortes contributions.</p></div>
     </section>
 
     <section class="chart-section reveal">
@@ -124,10 +124,10 @@
     <section class="recommendations reveal">
       <p class="eyebrow">Recommandations</p><h2>Transformer les constats en actions.</h2>
       <div>
-        <article><span>01</span><h3>Sécuriser les références stratégiques</h3><p>Maintenir la disponibilité des produits contribuant fortement au chiffre d’affaires.</p></article>
-        <article><span>02</span><h3>Valoriser le segment premium</h3><p>Mettre en avant les références combinant contribution élevée et bonne rentabilité.</p></article>
-        <article><span>03</span><h3>Réduire les stocks dormants</h3><p>Définir des actions commerciales ciblées pour les produits à rotation faible.</p></article>
-        <article><span>04</span><h3>Étendre la période d’analyse</h3><p>Comparer plusieurs mois pour distinguer tendances structurelles et effets saisonniers.</p></article>
+        <article><h3>Sécuriser les références stratégiques</h3><p>Maintenir la disponibilité des produits contribuant fortement au chiffre d’affaires.</p></article>
+        <article><h3>Valoriser le segment premium</h3><p>Mettre en avant les références combinant contribution élevée et bonne rentabilité.</p></article>
+        <article><h3>Réduire les stocks dormants</h3><p>Définir des actions commerciales ciblées pour les produits à rotation faible.</p></article>
+        <article><h3>Étendre la période d’analyse</h3><p>Comparer plusieurs mois pour distinguer tendances structurelles et effets saisonniers.</p></article>
       </div>
     </section>
 
