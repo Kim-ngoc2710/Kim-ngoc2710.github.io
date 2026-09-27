@@ -100,13 +100,30 @@ LOOP</code></pre>
 
     <section class="analysis-header reveal"><p class="eyebrow">Tableau de bord</p><h2>Un outil commun pour analyser, justifier et fiabiliser.</h2><p>Le dashboard associe pilotage budgétaire et contrôle opérationnel. Les sélections interactives permettent de passer d’une vision globale à la demande concernée, puis de documenter l’anomalie avec les référents.</p></section>
 
-    <section class="dashboard-demo reveal" aria-label="Maquette de dashboard avec données fictives">
-      <div class="demo-toolbar"><span>Année scolaire</span><span>Zone</span><span>Collège</span><span>Motif</span></div>
-      <div class="demo-kpis"><article><small>Demandes</small><strong>1 248</strong><em>valeur fictive</em></article><article><small>Taux de remplacement</small><strong>78,4 %</strong><em>valeur fictive</em></article><article><small>Budget consommé</small><strong>64 %</strong><em>valeur fictive</em></article><article><small>Anomalies ouvertes</small><strong>37</strong><em>valeur fictive</em></article></div>
-      <div class="demo-panels">
-        <article class="budget-bars"><h3>Budget estimé par zone</h3><div><span>Zone A</span><i style="--w:82%"></i></div><div><span>Zone B</span><i style="--w:68%"></i></div><div><span>Zone C</span><i style="--w:54%"></i></div></article>
-        <article class="anomaly-table"><h3>Anomalies à examiner</h3><div><b>Type</b><b>Établissement</b><b>Statut</b></div><div><span>Doublon</span><span>Collège A</span><em>À justifier</em></div><div><span>Chevauchement</span><span>Collège B</span><em>En cours</em></div><div><span>Coût atypique</span><span>Collège C</span><em>À contrôler</em></div></article>
+    <section class="dashboard-demo reveal" aria-label="Maquette de la page Synthèse globale avec données fictives">
+      <nav class="demo-pages" aria-label="Pages principales du tableau de bord"><span class="active">Synthèse globale</span><span>Suivi des dépenses</span><span>Suivi des absences</span><span>Anomalies</span></nav>
+      <div class="demo-controls">
+        <div class="demo-toolbar"><span>Année scolaire</span><span>Zone référent</span><span>Collège</span><span>Profil</span><span>Motif</span><span>Type de réponse</span></div>
+        <div class="display-switch" aria-label="Unité d’affichage"><small>Unité</small><b>Nombre</b><span>Nombre de jours</span></div>
       </div>
+      <div class="demo-kpis college-kpis">
+        <article><small>Nombre d’absences</small><strong>1 248</strong><em>valeur fictive</em></article>
+        <article><small>Nombre de remplacements</small><strong>976</strong><em>valeur fictive</em></article>
+        <article><small>Coût estimé</small><strong>684 k€</strong><em>68 % de l’enveloppe</em></article>
+        <article><small>Coût réel HR</small><strong>612 k€</strong><em>61 % de l’enveloppe</em></article>
+        <article><small>Enveloppe restante</small><strong>388 k€</strong><em>39 % disponible</em></article>
+      </div>
+      <div class="demo-distributions">
+        <article><h3>Absences par profil</h3><div class="donut donut-profile"><span>1 248<small>absences</small></span></div><div class="donut-legend"><i></i>Agents <i></i>Encadrement <i></i>Autres</div></article>
+        <article><h3>Absences par motif</h3><div class="donut donut-motif"><span>7<small>motifs</small></span></div><div class="donut-legend"><i></i>Maladie <i></i>Formation <i></i>Autres</div></article>
+        <article><h3>Réponses apportées</h3><div class="donut donut-response"><span>78 %<small>couverts</small></span></div><div class="donut-legend"><i></i>Remplacé <i></i>Entraide <i></i>Non couvert</div></article>
+        <article class="college-map"><h3>Collèges par zone référent</h3><svg viewBox="0 0 250 150" role="img" aria-label="Cartographie fictive des collèges colorés par zone référent"><path d="M88 8 L151 18 181 44 169 70 202 92 174 134 115 142 75 119 43 86 58 55Z"></path><g class="zone-a"><circle cx="92" cy="40" r="6"/><circle cx="126" cy="31" r="6"/><circle cx="151" cy="53" r="6"/></g><g class="zone-b"><circle cx="78" cy="78" r="6"/><circle cx="117" cy="70" r="6"/><circle cx="154" cy="87" r="6"/></g><g class="zone-c"><circle cx="93" cy="111" r="6"/><circle cx="132" cy="119" r="6"/><circle cx="171" cy="108" r="6"/></g></svg><div class="map-legend"><span><i></i>Zone A</span><span><i></i>Zone B</span><span><i></i>Zone C</span></div></article>
+      </div>
+      <div class="demo-evolution">
+        <article><h3>Évolution du nombre d’absences</h3><div class="evolution-bars abs-bars"><i style="--h:38%"></i><i style="--h:53%"></i><i style="--h:47%"></i><i style="--h:69%"></i><i style="--h:61%"></i><i style="--h:82%"></i><i style="--h:74%"></i><i style="--h:91%"></i><i style="--h:67%"></i><i style="--h:79%"></i><i style="--h:58%"></i><i style="--h:72%"></i></div><div class="month-axis"><span>Sept.</span><span>Déc.</span><span>Mars</span><span>Juin</span><span>Août</span></div></article>
+        <article><h3>Évolution du coût des remplacements</h3><div class="evolution-bars cost-bars"><i style="--h:31%"></i><i style="--h:44%"></i><i style="--h:58%"></i><i style="--h:51%"></i><i style="--h:76%"></i><i style="--h:64%"></i><i style="--h:86%"></i><i style="--h:72%"></i><i style="--h:94%"></i><i style="--h:81%"></i><i style="--h:69%"></i><i style="--h:88%"></i></div><div class="month-axis"><span>Sept.</span><span>Déc.</span><span>Mars</span><span>Juin</span><span>Août</span></div></article>
+      </div>
+      <p class="demo-disclaimer">Structure fidèle au produit · données et géographie reconstituées</p>
     </section>
 
     <section class="case-section workflow-section reveal">
