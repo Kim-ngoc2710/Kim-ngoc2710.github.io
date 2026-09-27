@@ -40,8 +40,8 @@
     </aside>
 
     <section class="case-section case-intro reveal">
-      <div><p class="eyebrow">Contexte</p><h2>Des données nombreuses, distribuées et saisies manuellement.</h2></div>
-      <div class="case-copy"><p>Le suivi des absences et des remplacements repose sur une application opérationnelle centrale. Chaque table métier — demandes, absences, agents, profils ou remplacements — est toutefois exposée par une API distincte. Ces données sont ensuite complétées par des référentiels publics gouvernementaux.</p><p>Une partie des données étant saisie manuellement, des erreurs, omissions ou demandes répétées peuvent apparaître. Sans contrôle, ces incohérences faussent les volumes suivis et le coût estimé des remplacements.</p></div>
+      <div><p class="eyebrow">Contexte</p><h2>Fiabiliser le pilotage d’un processus métier à partir de données opérationnelles.</h2></div>
+      <div class="case-copy"><p>Le pilotage des absences, des remplacements et de leur impact budgétaire s’appuie sur une application métier dont chaque table est exposée par une API distincte, complétée par des référentiels publics. L’enjeu consiste à reconstruire une vision consolidée et exploitable à partir de sources de granularités différentes.</p><p>La saisie manuelle peut générer des doublons, des périodes incohérentes ou plusieurs demandes pour une même absence, avec un effet direct sur les volumes et le coût prévisionnel. Le projet sécurise la chaîne de données en détectant ces anomalies avant agrégation et en fournissant aux référents des indicateurs traçables pour analyser, justifier et ajuster le budget.</p></div>
     </section>
 
     <section class="college-architecture reveal">
@@ -71,11 +71,10 @@ LOOP</code></pre>
     </section>
 
     <section class="college-model reveal">
-      <div class="college-model-copy"><p class="eyebrow">Modélisation</p><h2>Relier les événements à une granularité journalière.</h2><p>L’extrait ci-contre présente trois tables de dimension à part entière&nbsp;: <strong>Motif</strong>, <strong>Profil</strong> et <strong>Collège</strong>. Elles ont le même rôle architectural que les autres dimensions du modèle et contextualisent les tables métier <strong>Demande d’absence</strong>, <strong>Remplacement</strong> et <strong>Coût</strong>.</p><p>La table de liaison <strong>LinkDate</strong> relie les absences aux remplacements et transforme chaque période en une ligne par jour. Cette granularité permet de compter précisément les jours concernés, d’identifier pour chaque date si l’absence a été remplacée et selon quel type de réponse, puis de calculer le coût estimé et de comparer les KPI entre N et N−1.</p></div>
-      <div class="model-map" aria-label="Extrait simplifié du modèle de données avec dimensions, tables métier et table LinkDate">
-        <p class="model-caption">Extrait simplifié du modèle</p>
-        <div class="model-family model-dimensions"><small>TABLES DE DIMENSION · EXTRAIT</small><p>Trois dimensions représentées parmi celles du modèle.</p><div><span><em>Dimension</em><b>Motif</b></span><span><em>Dimension</em><b>Profil</b></span><span><em>Dimension</em><b>Collège</b></span></div></div>
-        <div class="model-family model-facts"><small>TABLES MÉTIER</small><div><span><b>Demande d’absence</b></span><span><b>Remplacement</b></span><span><b>Coût</b></span></div></div>
+      <div class="college-model-copy"><p class="eyebrow">Modélisation</p><h2>Construire une lecture journalière des absences et des remplacements.</h2><p>Les six tables de dimension — <strong>Motif</strong>, <strong>Profil</strong>, <strong>Collège</strong>, <strong>Demande d’absence</strong>, <strong>Remplacement</strong> et <strong>Coût</strong> — sont intégrées au même niveau dans le modèle analytique.</p><p><strong>LinkDate</strong> constitue la couche de liaison&nbsp;: elle décompose chaque période d’absence en une ligne par jour et associe la réponse de remplacement correspondante. Ce grain journalier sécurise le calcul des jours couverts, du coût estimé et des comparaisons N / N−1.</p></div>
+      <div class="model-map" aria-label="Extrait du modèle analytique avec six tables de dimension reliées à LinkDate">
+        <p class="model-caption">Extrait du modèle analytique</p>
+        <div class="model-family model-dimensions"><small>TABLES DE DIMENSION</small><div><span><em>Dimension</em><b>Motif</b></span><span><em>Dimension</em><b>Profil</b></span><span><em>Dimension</em><b>Collège</b></span><span><em>Dimension</em><b>Demande d’absence</b></span><span><em>Dimension</em><b>Remplacement</b></span><span><em>Dimension</em><b>Coût</b></span></div></div>
         <article class="linkdate-card"><small>TABLE DE LIAISON</small><h3>LinkDate</h3><p>Clé absence · Clé remplacement · Date · Type de réponse</p><div class="date-example"><div><b>01/04</b><span>Non remplacé</span></div><div><b>02/04</b><span>Remplacé</span></div><div><b>03/04</b><span>Entraide</span></div></div></article>
       </div>
     </section>
