@@ -41,14 +41,14 @@
 
     <section class="case-section case-intro reveal">
       <div><p class="eyebrow">Contexte</p><h2>Des données nombreuses, distribuées et saisies manuellement.</h2></div>
-      <div class="case-copy"><p>Le suivi des absences et des remplacements mobilise plusieurs applications opérationnelles ainsi que des données publiques gouvernementales. Les informations nécessaires au pilotage sont réparties entre différentes API et ne partagent pas toujours la même structure ni le même niveau de détail.</p><p>Une partie des données étant saisie manuellement, des erreurs, omissions ou demandes répétées peuvent apparaître. Sans contrôle, ces incohérences faussent les volumes suivis et le coût estimé des remplacements.</p></div>
+      <div class="case-copy"><p>Le suivi des absences et des remplacements repose sur une application opérationnelle centrale. Chaque table métier — demandes, absences, agents, profils ou remplacements — est toutefois exposée par une API distincte. Ces données sont ensuite complétées par des référentiels publics gouvernementaux.</p><p>Une partie des données étant saisie manuellement, des erreurs, omissions ou demandes répétées peuvent apparaître. Sans contrôle, ces incohérences faussent les volumes suivis et le coût estimé des remplacements.</p></div>
     </section>
 
     <section class="college-architecture reveal">
       <p class="eyebrow">Architecture</p>
       <h2>Un pipeline multi-API conçu pour des volumes paginés.</h2>
       <div class="architecture-grid">
-        <article><small>01 · SOURCES</small><h3>API opérationnelles</h3><p>Demandes, absences, agents, profils, remplacements et éléments de coût.</p></article>
+        <article><small>01 · SOURCE MÉTIER</small><h3>Une application, plusieurs API</h3><p>Chaque table de l’application — demandes, absences, agents, profils ou remplacements — dispose de son propre point d’accès.</p></article>
         <article><small>02 · ENRICHISSEMENT</small><h3>Données publiques</h3><p>Référentiels gouvernementaux utilisés pour compléter et harmoniser l’analyse.</p></article>
         <article><small>03 · EXTRACTION</small><h3>Pagination par boucle</h3><p>Lecture successive des pages jusqu’à récupération de l’ensemble des enregistrements.</p></article>
         <article><small>04 · STOCKAGE</small><h3>Couche QVD</h3><p>Standardisation, historisation et mise à disposition de données contrôlées.</p></article>
@@ -71,9 +71,11 @@ LOOP</code></pre>
     </section>
 
     <section class="college-model reveal">
-      <div class="college-model-copy"><p class="eyebrow">Modélisation</p><h2>Un modèle analytique centré sur la demande de remplacement.</h2><p>La granularité et les clés sont définies avant les jointures afin d’éviter les doublons techniques et les associations ambiguës. Le modèle relie les demandes aux périodes, établissements, profils, motifs, remplacements et coûts.</p></div>
-      <div class="model-map" aria-label="Modèle de données simplifié">
-        <span>Calendrier scolaire</span><span>Établissements & zones</span><strong>Demandes de remplacement</strong><span>Absences & motifs</span><span>Agents & profils</span><span>Remplacements & coûts</span>
+      <div class="college-model-copy"><p class="eyebrow">Modélisation</p><h2>Relier les événements à une granularité journalière.</h2><p>Le modèle distingue les dimensions <strong>Motif</strong>, <strong>Profil</strong> et <strong>Collège</strong> des tables métier <strong>Demande d’absence</strong>, <strong>Remplacement</strong> et <strong>Coût</strong>. Une table de liaison <strong>LinkDate</strong> relie les absences aux remplacements et transforme chaque période en une ligne par jour.</p><p>Cette granularité permet de compter précisément les jours concernés, d’identifier pour chaque date si l’absence a été remplacée et selon quel type de réponse, puis de calculer le coût estimé et de comparer les KPI entre N et N−1.</p></div>
+      <div class="model-map" aria-label="Modèle de données simplifié avec table LinkDate">
+        <div class="model-family model-dimensions"><small>DIMENSIONS</small><div><span>Motif</span><span>Profil</span><span>Collège</span></div></div>
+        <div class="model-family model-facts"><small>TABLES MÉTIER</small><div><span>Demande d’absence</span><span>Remplacement</span><span>Coût</span></div></div>
+        <article class="linkdate-card"><small>TABLE DE LIAISON</small><h3>LinkDate</h3><p>Clé absence · Clé remplacement · Date · Type de réponse</p><div class="date-example"><div><b>01/04</b><span>Non remplacé</span></div><div><b>02/04</b><span>Remplacé</span></div><div><b>03/04</b><span>Entraide</span></div></div></article>
       </div>
     </section>
 
