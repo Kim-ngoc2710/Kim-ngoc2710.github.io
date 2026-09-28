@@ -170,18 +170,69 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
     </section>
 
     <section class="contract-section college-loop reveal">
-      <div class="contract-copy"><p class="eyebrow">Pagination</p><h2>Automatiser une extraction complète sans limiter le volume.</h2><p>L’API retournant les données page par page, le script interroge successivement chaque page, concatène les résultats et s’arrête lorsque la dernière page est atteinte. Des contrôles vérifient le nombre de lignes récupérées et la cohérence de la réponse.</p></div>
-      <pre><code>LET vPage = 1;
-LET vLastPage = 1;
+      <div class="contract-copy">
+        <p class="eyebrow">Pagination · extrait adapté</p>
+        <h2>Parcourir toutes les pages et ajouter leurs résultats.</h2>
+        <p>Le script fixe d’abord la taille des pages, interroge la première page pour lire <strong>lastPage</strong>, puis parcourt les pages de <strong>1 à vDernierePage</strong>, passe le numéro de page à chaque appel REST, puis ajoute les lignes renvoyées à une table fact déjà créée. Ainsi, aucune branche spéciale n’est nécessaire pour la première page. Les noms de l’API et des champs sont fictifs&nbsp;; la structure de la boucle et de la concaténation reprend la logique utilisée dans le projet.</p>
+      </div>
+      <pre><code>// Extrait Qlik adapté : noms de l’API et des champs fictifs
+LET vTaillePage = 100;
 
-DO WHILE vPage &lt;= vLastPage
-    // Appel de la page courante
-    // Lecture des enregistrements
-    // Concaténation des résultats
+// Lire les métadonnées de la première page
+MetaPaginationAPI:
+SQL SELECT
+    "lastPage",
+    "total"
+FROM JSON (wrap on) "root"
+WITH CONNECTION (
+    QUERY "page"     "1",
+    QUERY "pageSize" "$(vTaillePage)"
+);
 
-    LET vLastPage = total_pages;
-    LET vPage = vPage + 1;
-LOOP</code></pre>
+MetaPagination:
+LOAD
+    Num([lastPage]) AS DernierePage
+RESIDENT MetaPaginationAPI;
+
+LET vDernierePage = Peek('DernierePage', 0, 'MetaPagination');
+DROP TABLES MetaPaginationAPI, MetaPagination;
+
+// La table FACT_Absences existe déjà avant cette boucle
+FOR vPage = 1 TO $(vDernierePage)
+
+    ReponseAPI:
+    SQL SELECT
+        "lastPage",
+        "currentPage",
+        (
+            SELECT
+                "id"         AS "IdAbsence",
+                "demandeId"  AS "IdDemande",
+                "dateDebut"  AS "DateDebut",
+                "dateFin"    AS "DateFin",
+                "__KEY_results"
+            FROM "results" PK "__KEY_results"
+        )
+    FROM JSON (wrap on) "root"
+    WITH CONNECTION (
+        QUERY "page"     "$(vPage)",
+        QUERY "pageSize" "$(vTaillePage)"
+    );
+
+    CONCATENATE (FACT_Absences)
+    LOAD
+        [__KEY_results]
+            + $(vTaillePage) * ($(vPage) - 1) AS CleTechnique,
+        [IdAbsence]                           AS CleAbsence,
+        [IdDemande]                           AS CleDemande,
+        Date(Floor([DateDebut]), 'YYYY/MM/DD') AS DebutAbsence,
+        Date(Floor([DateFin]), 'YYYY/MM/DD')   AS FinAbsence
+    RESIDENT ReponseAPI
+    WHERE NOT IsNull([IdAbsence])
+      AND NOT IsNull([DateDebut])
+      AND NOT IsNull([DateFin]);
+
+NEXT vPage</code></pre>
     </section>
 
     <section class="college-model reveal">
