@@ -106,3 +106,56 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
   footer { flex-direction: column; align-items: flex-start; padding: 26px 24px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }.reveal { opacity: 1; transform: none; transition: none; } * { transition: none !important; } }
+
+/* Typographie commune aux quatre études de cas */
+main .eyebrow {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(.88rem, 1.05vw, 1rem);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: .1em;
+  color: var(--green);
+}
+main .case-hero .eyebrow,
+main .contract-section .eyebrow,
+main .analysis-header .eyebrow,
+main .recommendations:not(.market-ranking) .eyebrow,
+main .market-profiles .eyebrow,
+main .eq-score .eyebrow,
+main .dashboard-demo .eyebrow { color: var(--lime); }
+main .case-section h2,
+main .college-architecture > h2,
+main .college-model h2,
+main .anomaly-logic h2,
+main .workflow-section h2,
+main .contract-copy h2,
+main .analysis-header h2,
+main .chart-heading h2,
+main .stock-section h2,
+main .recommendations h2,
+main .technical-results h2,
+main .skills-summary h2,
+main .market-profiles > h2,
+main .eq-architecture h2,
+main .eq-workflow h2,
+main .eq-analysis h2,
+main .eq-score h2,
+main .analysis-copy h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+main .eq-kpis strong {
+  font-family: Georgia, serif;
+  font-size: clamp(1.55rem, 1.8vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* Séparation cohérente entre le libellé et le titre Compétences */
+main .skills-summary > .eyebrow {
+  margin: 0 0 20px;
+  color: var(--green);
+}
