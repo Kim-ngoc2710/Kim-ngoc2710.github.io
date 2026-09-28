@@ -155,12 +155,20 @@ main .analysis-copy h3 {
   line-height: 1.08;
   letter-spacing: -.035em;
 }
-main .case-kpis strong,
 main .eq-kpis strong {
   font-family: Georgia, serif;
   font-size: clamp(1.55rem, 1.8vw, 1.8rem);
   font-weight: 500;
   line-height: 1.15;
+}
+<style>
+/* Ajustement de la bande de KPI du projet 3 */
+.case-kpis[aria-label="Périmètre de l’analyse"] article {
+  min-height: 170px;
+  padding: 30px 25px;
+}
+@media (max-width: 720px) {
+  .case-kpis[aria-label="Périmètre de l’analyse"] article { min-height: 120px; }
 }
 </style>
 </head>
