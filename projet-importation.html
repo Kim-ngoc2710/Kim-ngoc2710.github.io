@@ -175,6 +175,10 @@ main .eq-kpis strong {
   .case-kpis[aria-label="Périmètre de l’analyse"] article { min-height: 120px; }
 }
 </style>
+<style>
+/* Séparation cohérente entre le libellé et le titre Compétences */
+main .skills-summary > .eyebrow { margin: 0 0 20px; }
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -256,18 +260,18 @@ main .eq-kpis strong {
     </section>
 
     <section class="analysis-block market-score reveal">
-      <div class="analysis-copy"><p class="eyebrow">Priorisation</p><h3>Passer de la segmentation à une liste de marchés actionnable.</h3><p>Au sein du segment retenu, les indicateurs sont normalisés puis combinés dans un score de ciblage. La taille du marché reçoit le poids principal, complétée par la performance logistique et la stabilité politique.</p><a class="project-link" href="https://github.com/Kim-ngoc2710/Strategie_importation_internationale" target="_blank" rel="noreferrer">Consulter le notebook sur GitHub <span>→</span></a></div>
+      <div class="analysis-copy"><p class="eyebrow">Priorisation</p><h3>Passer de la segmentation à une liste de marchés actionnable.</h3><p>Au sein du segment retenu, les indicateurs sont normalisés puis combinés dans un score de ciblage. La taille du marché reçoit le poids principal, complétée par la performance logistique et la stabilité politique.</p></div>
       <div class="score-formula"><small>SCORE DE CIBLAGE</small><div><strong>50 %</strong><span>Population</span></div><div><strong>30 %</strong><span>Performance logistique</span></div><div><strong>20 %</strong><span>Stabilité politique</span></div></div>
     </section>
 
     <section class="recommendations market-ranking reveal">
-      <p class="eyebrow">Résultat</p><h2 style="padding-top: 32px;">Dix marchés ressortent selon les critères retenus.</h2>
+      <p class="eyebrow">Résultat</p><h2 style="padding-top: 20px;">Dix marchés ressortent selon les critères retenus.</h2>
       <ol><li><b>01</b>Pays-Bas</li><li><b>02</b>Suède</li><li><b>03</b>Belgique</li><li><b>04</b>Autriche</li><li><b>05</b>Suisse</li><li><b>06</b>Tchéquie</li><li><b>07</b>Émirats arabes unis</li><li><b>08</b>Portugal</li><li><b>09</b>Hong Kong</li><li><b>10</b>Finlande</li></ol>
       <p class="ranking-note">Ce classement constitue un outil d’aide à la décision fondé sur les données disponibles. Il doit être complété par l’analyse de la concurrence, des barrières réglementaires, des coûts d’entrée et du positionnement produit.</p>
     </section>
 
     <section class="skills-summary reveal">
-      <p class="eyebrow">Compétences démontrées</p><h2 style="padding-top: 32px;">De sources publiques hétérogènes à une recommandation stratégique.</h2>
+      <p class="eyebrow">Compétences démontrées</p><h2>De sources publiques hétérogènes à une recommandation stratégique.</h2>
       <div><article><small>DATA PREPARATION</small><p>Nettoyage, jointures multi-sources, référentiels pays et traitement des valeurs manquantes.</p></article><article><small>ANALYSE STATISTIQUE</small><p>Corrélations, distributions, transformations, standardisation et ACP.</p></article><article><small>MACHINE LEARNING</small><p>CAH, K-Means, coefficient de silhouette et comparaison de partitions.</p></article><article><small>DATA VISUALISATION</small><p>Variance expliquée, cercle des corrélations et projection des clusters.</p></article><article><small>SCORING</small><p>Normalisation, pondération multicritère et classement des marchés.</p></article><article><small>BUSINESS</small><p>Lecture des profils pays, limites de l’analyse et recommandations de ciblage.</p></article></div>
     </section>
 
