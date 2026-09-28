@@ -29,14 +29,14 @@ nav { display: flex; align-items: center; gap: 30px; } nav a { position: relativ
 nav a:not(.contact-link)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--green); transition: right .2s ease; } nav a:hover::after, nav a.active::after { right: 0; }
 .contact-link { padding: 9px 18px; border-radius: 999px; background: var(--ink); color: white; }
 .menu-button { display: none; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .82rem; font-weight: 800; }
-.eyebrow { margin: 0 0 18px; color: var(--green); font-size: .72rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 20px; color: var(--green); font-size: clamp(.88rem,1.05vw,1rem); font-weight: 800; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
 h1,h2,h3,p { margin-top: 0; }
 .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-size: .88rem; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }.button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(20,32,28,.12); }
 .primary { background: var(--green); color: white; }.secondary { border-color: var(--line); }.light { background: var(--lime); color: var(--ink); }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }.reveal.visible { opacity: 1; transform: none; }
 
 .home-hero { min-height: calc(100vh - 76px); display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 8vw; padding: 75px clamp(24px,8vw,130px); overflow: hidden; }
-.hero-copy h1 { max-width: 850px; margin-bottom: 28px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: clamp(2.75rem,4.8vw,5.2rem); font-weight: 780; line-height: 1.02; letter-spacing: -.052em; }.hero-copy h1 span { display: block; margin-top: .08em; color: var(--green); font-weight: 620; }
+.hero-copy h1 { max-width: 850px; margin-bottom: 28px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: clamp(2.75rem,4.8vw,5.2rem); font-weight: 780; line-height: 1.02; letter-spacing: -.052em; }.hero-copy h1 span { display: block; margin-top: .08em; color: var(--green); font-weight: 620; font-style: normal; }
 .intro { max-width: 760px; margin-bottom: 34px; color: var(--muted); font-size: clamp(1rem,1.35vw,1.16rem); line-height: 1.8; }.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-art { position: relative; min-height: 540px; }.portrait-frame { position: absolute; inset: 8% 3% 5% 10%; overflow: hidden; display: grid; place-items: center; border-radius: 48% 48% 20px 20px; background: var(--green); box-shadow: var(--shadow); }
 .portrait-frame::before { content: ""; position: absolute; width: 360px; height: 360px; border: 1px solid rgba(255,255,255,.27); border-radius: 50%; }.portrait-frame::after { content: ""; position: absolute; width: 480px; height: 480px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; }
@@ -113,6 +113,55 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
   .market-ranking { color: var(--ink); }
   .market-ranking .eyebrow { color: var(--green); }
   .market-ranking p.ranking-note { color: var(--muted); }
+</style>
+<style>
+/* Typographie commune aux quatre études de cas */
+main .eyebrow {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(.88rem, 1.05vw, 1rem);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: .1em;
+  color: var(--green);
+}
+main .case-hero .eyebrow,
+main .contract-section .eyebrow,
+main .analysis-header .eyebrow,
+main .recommendations:not(.market-ranking) .eyebrow,
+main .market-profiles .eyebrow,
+main .eq-score .eyebrow,
+main .dashboard-demo .eyebrow { color: var(--lime); }
+main .case-section h2,
+main .college-architecture > h2,
+main .college-model h2,
+main .anomaly-logic h2,
+main .workflow-section h2,
+main .contract-copy h2,
+main .analysis-header h2,
+main .chart-heading h2,
+main .stock-section h2,
+main .recommendations h2,
+main .technical-results h2,
+main .skills-summary h2,
+main .market-profiles > h2,
+main .eq-architecture h2,
+main .eq-workflow h2,
+main .eq-analysis h2,
+main .eq-score h2,
+main .analysis-copy h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+main .case-kpis strong,
+main .eq-kpis strong {
+  font-family: Georgia, serif;
+  font-size: clamp(1.55rem, 1.8vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
 </style>
 </head>
 <body>
