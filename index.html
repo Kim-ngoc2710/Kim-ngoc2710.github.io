@@ -6,6 +6,16 @@
   <meta name="description" content="Portfolio de Kim Ngoc Pham, chargée d'études statistiques et Data Analyst.">
   <title>Kim Ngoc Pham | Data Analyst</title>
   <link rel="stylesheet" href="assets/style.css?v=20260928-4">
+  <style>
+    .home-hero .card-tools { max-width: 340px; }
+    .home-hero .card-tools strong { font-size: .9rem; line-height: 1.7; overflow-wrap: break-word; }
+    .home-keywords { padding: 42px clamp(24px,8vw,130px); border-bottom: 1px solid var(--line); }
+    .home-keywords > div { display: grid; grid-template-columns: 205px minmax(0,1fr); gap: 24px; }
+    .home-keywords > div + div { margin-top: 24px; }
+    .home-keywords h2 { margin: 0; font-size: .8rem; line-height: 1.65; color: var(--green); font-weight: 850; }
+    .home-keywords p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.9; }
+    @media (max-width: 600px) { .home-keywords > div { grid-template-columns: 1fr; gap: 8px; } .home-hero .card-tools { max-width: min(300px, 85%); } }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -38,7 +48,7 @@
           <div class="data-line line-two"></div>
           <div class="data-line line-three"></div>
         </div>
-        <div class="floating-card card-tools"><small>OUTILS</small><strong>Qlik · SQL · Python</strong></div>
+        <div class="floating-card card-tools"><small>OUTILS</small><strong>Qlik Sense · SQL · Python · Power BI · Tableau · KNIME AP · Alteryx · Data mart · API REST · Jira</strong></div>
         <div class="floating-card card-focus"><small>FOCUS</small><strong>Des données aux décisions</strong></div>
       </div>
     </section>
@@ -48,6 +58,11 @@
       <div><span>02</span><strong>Data visualisation</strong></div>
       <div><span>03</span><strong>Automatisation</strong></div>
       <div><span>04</span><strong>Aide à la décision</strong></div>
+    </section>
+
+    <section class="home-keywords" aria-label="Domaines et compétences professionnelles">
+      <div><h2>Domaines</h2><p>Secteur public · Action sociale · Collèges · Emploi et insertion · Fiscalité et comptabilité publiques · Eau et assainissement · Édition de logiciels photographiques · Industrie pharmaceutique et santé · Supply chain</p></div>
+      <div><h2>Gestion de projet &amp; compétences transversales</h2><p>Recueil des besoins métiers · Conception de solutions data · Gestion de projet · Animation d’ateliers · Coordination · Priorisation · Communication métier · Résolution de problèmes · Audit · Qualité des données · Automatisation · Documentation · Recette · Mise en production · Accompagnement des utilisateurs</p></div>
     </section>
 
     <section class="home-next">
