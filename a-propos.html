@@ -6,6 +6,21 @@
   <meta name="description" content="Parcours, expériences et compétences de Kim Ngoc Pham, Data Analyst.">
   <title>À propos | Kim Ngoc Pham</title>
   <link rel="stylesheet" href="assets/style.css?v=20260928-10">
+  <style>
+    .client-missions { margin: 30px 0 0 24px; padding-left: 24px; border-left: 1px solid var(--line); }
+    .client-mission { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+    .client-mission:first-child { padding-top: 0; border-top: 0; }
+    .client-mission:last-child { padding-bottom: 0; }
+    .client-mission .organisation { font-size: .78rem; }
+    .client-mission .mission-duration { color: var(--muted); font-size: .78rem; }
+    .client-mission h4 { margin: 0 0 14px; font-family: Georgia, serif; font-size: 1.35rem; font-weight: 500; line-height: 1.3; color: var(--ink); }
+    .client-mission .mission-domain { margin: 0 0 14px; color: var(--muted); font-size: .85rem; }
+    .client-mission ul { margin: 0; }
+    .client-mission li + li { margin-top: 7px; }
+    .client-mission .experience-tags { margin-top: 16px; }
+    @media (max-width: 1000px) { .client-missions { margin-left: 12px; padding-left: 16px; } .client-mission { grid-template-columns: 110px minmax(0, 1fr); gap: 16px; } }
+    @media (max-width: 600px) { .client-missions { margin-left: 0; padding-left: 14px; } .client-mission { grid-template-columns: minmax(0, 1fr); gap: 10px; } .client-mission h4 { font-size: 1.2rem; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -58,15 +73,51 @@
             <p class="organisation">Mydral</p>
             <h3>Consultante Data Analyst</h3>
             <p class="lead">Optimisation, automatisation et fiabilisation des données.</p>
-            <p><strong>Domaines d’intervention :</strong> Distribution alimentaire et supply chain, fiscalité et finances publiques, services publics.</p>
-            <p><strong>Clients :</strong> DGFiP, Grand Lyon, Albert Heijn.</p>
-            <ul>
-              <li>Audit et automatisation de workflows avec contrôles qualité et envois vers Tableau Server.</li>
-              <li>Préparation et structuration de données comptables avec Tableau Prep.</li>
-              <li>Animation d’ateliers métiers et recueil des besoins.</li>
-              <li>Modélisation sous PostgreSQL et KNIME pour le suivi d’indicateurs.</li>
-            </ul>
-            <div class="experience-tags" aria-label="Outils et compétences"><span>KNIME</span><span>Tableau Prep</span><span>Tableau Server</span><span>PostgreSQL</span><span>SQL</span><span>Data quality</span><span>Conseil</span><span>Pilotage de projet</span></div>
+            <p><strong>Domaines d’intervention :</strong> Distribution alimentaire et supply chain, fiscalité et comptabilité publiques, eau et assainissement, édition de logiciels photographiques.</p>
+            <p><strong>Clients :</strong> DGFiP, Grand Lyon, DxO Labs, Albert Heijn.</p>
+            <div class="client-missions" aria-label="Missions clients chez Mydral">
+              <article class="client-mission">
+                <div><p class="organisation">DGFiP</p><span class="mission-duration">4 mois</span></div>
+                <div>
+                  <h4>Analyse comptable &amp; reporting</h4>
+                  <p class="mission-domain">Fiscalité et comptabilité publiques</p>
+                  <ul>
+                    <li>Recueil des besoins métiers et animation d’ateliers de conception de tableaux de bord.</li>
+                    <li>Contrôle de l’intégrité et de la cohérence des données comptables.</li>
+                    <li>Élaboration de modèles analytiques et proposition de visualisations adaptées au pilotage d’activité.</li>
+                    <li>Mise en production des tableaux de bord, suivi de la qualité des données et rédaction de la documentation fonctionnelle.</li>
+                  </ul>
+                  <div class="experience-tags" aria-label="Outils utilisés pour la mission"><span>Tableau Desktop</span><span>Tableau Server</span><span>KNIME AP</span></div>
+                </div>
+              </article>
+              <article class="client-mission">
+                <div><p class="organisation">Grand Lyon</p><span class="mission-duration">2 mois</span></div>
+                <div>
+                  <h4>Préparation de données &amp; datamarts</h4>
+                  <p class="mission-domain">Eau et assainissement</p>
+                  <ul>
+                    <li>Recueil des besoins métiers et analyse des données pertinentes.</li>
+                    <li>Développement de workflows KNIME pour préparer les données et alimenter des datamarts adaptés aux besoins.</li>
+                    <li>Rédaction de comptes rendus et de la documentation fonctionnelle.</li>
+                  </ul>
+                  <div class="experience-tags" aria-label="Outils utilisés pour la mission"><span>KNIME AP</span></div>
+                </div>
+              </article>
+              <article class="client-mission">
+                <div><p class="organisation">DxO Labs</p><span class="mission-duration">3 mois</span></div>
+                <div>
+                  <h4>Fiabilisation des workflows KNIME</h4>
+                  <p class="mission-domain">Édition de logiciels photographiques</p>
+                  <ul>
+                    <li>Analyse de l’existant et échanges réguliers avec les équipes métiers.</li>
+                    <li>Audit des workflows de préparation de données et identification des problèmes rencontrés.</li>
+                    <li>Adaptation des workflows pour résoudre un problème d’authentification multifacteur (MFA).</li>
+                    <li>Contrôle de la qualité des données, correction des anomalies et suivi de la planification et du bon fonctionnement des traitements.</li>
+                  </ul>
+                  <div class="experience-tags" aria-label="Outils utilisés pour la mission"><span>KNIME AP</span></div>
+                </div>
+              </article>
+            </div>
           </div>
         </article>
 
