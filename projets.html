@@ -108,7 +108,6 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }.reveal { opacity: 1; transform: none; transition: none; } * { transition: none !important; } }
 
-.project-visual.colleges-preview { padding: 0; min-height: 0; background: #14211c; }.colleges-preview img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -143,7 +142,7 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
       </article>
 
       <article class="project-placeholder reveal">
-        <div class="project-visual visual-colleges colleges-preview"><img src="assets/colleges-dashboard-preview.png" alt="Aperçu du tableau de bord Qlik Sense : absences, remplacements et suivi budgétaire — données fictives" loading="lazy"></div>
+        <div class="project-visual visual-colleges" aria-hidden="true"><div class="mini-kpis"><i></i><i></i><i></i></div><div class="mini-chart"><b></b><b></b><b></b><b></b><b></b></div><div class="mini-alerts"><span></span><span></span><span></span></div></div>
         <div class="project-body">
           <div class="project-top"><span>Projet 02</span><span>Business Intelligence</span></div>
           <h2>Pilotage des remplacements dans les collèges</h2>
