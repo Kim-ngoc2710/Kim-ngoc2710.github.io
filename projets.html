@@ -29,14 +29,14 @@ nav { display: flex; align-items: center; gap: 30px; } nav a { position: relativ
 nav a:not(.contact-link)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--green); transition: right .2s ease; } nav a:hover::after, nav a.active::after { right: 0; }
 .contact-link { padding: 9px 18px; border-radius: 999px; background: var(--ink); color: white; }
 .menu-button { display: none; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .82rem; font-weight: 800; }
-.eyebrow { margin: 0 0 18px; color: var(--green); font-size: .72rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 20px; color: var(--green); font-size: clamp(.88rem,1.05vw,1rem); font-weight: 800; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
 h1,h2,h3,p { margin-top: 0; }
 .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-size: .88rem; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }.button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(20,32,28,.12); }
 .primary { background: var(--green); color: white; }.secondary { border-color: var(--line); }.light { background: var(--lime); color: var(--ink); }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }.reveal.visible { opacity: 1; transform: none; }
 
 .home-hero { min-height: calc(100vh - 76px); display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 8vw; padding: 75px clamp(24px,8vw,130px); overflow: hidden; }
-.hero-copy h1 { max-width: 850px; margin-bottom: 28px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: clamp(2.75rem,4.8vw,5.2rem); font-weight: 780; line-height: 1.02; letter-spacing: -.052em; }.hero-copy h1 span { display: block; margin-top: .08em; color: var(--green); font-weight: 620; }
+.hero-copy h1 { max-width: 850px; margin-bottom: 28px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: clamp(2.75rem,4.8vw,5.2rem); font-weight: 780; line-height: 1.02; letter-spacing: -.052em; }.hero-copy h1 span { display: block; margin-top: .08em; color: var(--green); font-weight: 620; font-style: normal; }
 .intro { max-width: 760px; margin-bottom: 34px; color: var(--muted); font-size: clamp(1rem,1.35vw,1.16rem); line-height: 1.8; }.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-art { position: relative; min-height: 540px; }.portrait-frame { position: absolute; inset: 8% 3% 5% 10%; overflow: hidden; display: grid; place-items: center; border-radius: 48% 48% 20px 20px; background: var(--green); box-shadow: var(--shadow); }
 .portrait-frame::before { content: ""; position: absolute; width: 360px; height: 360px; border: 1px solid rgba(255,255,255,.27); border-radius: 50%; }.portrait-frame::after { content: ""; position: absolute; width: 480px; height: 480px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; }
@@ -108,6 +108,7 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }.reveal { opacity: 1; transform: none; transition: none; } * { transition: none !important; } }
 
+.project-visual.colleges-preview { padding: 0; min-height: 0; background: #14211c; }.colleges-preview img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -142,7 +143,7 @@ footer { min-height: 82px; display: flex; align-items: center; justify-content: 
       </article>
 
       <article class="project-placeholder reveal">
-        <div class="project-visual visual-colleges" aria-hidden="true"><div class="mini-kpis"><i></i><i></i><i></i></div><div class="mini-chart"><b></b><b></b><b></b><b></b><b></b></div><div class="mini-alerts"><span></span><span></span><span></span></div></div>
+        <div class="project-visual visual-colleges colleges-preview"><img src="assets/colleges-dashboard-preview.png" alt="Aperçu du tableau de bord Qlik Sense : absences, remplacements et suivi budgétaire — données fictives" loading="lazy"></div>
         <div class="project-body">
           <div class="project-top"><span>Projet 02</span><span>Business Intelligence</span></div>
           <h2>Pilotage des remplacements dans les collèges</h2>
